@@ -5,7 +5,7 @@ const MovieBox = ({ film }) => {
   return (
     <Link href={`/movie/${film.film_id}`}>
     <div className="movie-box">
-      <img 
+       <img 
         src={film.images.poster["1"].medium.film_image} 
         alt={film.film_name} 
       />

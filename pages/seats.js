@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
+import { useStateContext } from "../components/Provider";
+import ls from 'local-storage';
 
 const SeatBooking = () => {
+
+  const { selectedSeats, toggleSeatSelection } = useStateContext();
   // State to keep track of selected seats
-  const [selectedSeats, setSelectedSeats] = useState([]);
+  const totalSelectedSeats = selectedSeats.length;
 
   // Example seat layout as a 2D array
   const seats = [
@@ -11,17 +15,10 @@ const SeatBooking = () => {
     ['C1', 'C2', 'C3', 'C4', 'C5'],
   ];
 
-  // Function to handle seat selection
-  //if selectedSeats has the number of the seat then remove it from that array
-  const toggleSeatSelection = (seat) => {
-    if (selectedSeats.includes(seat)) {
-      setSelectedSeats(selectedSeats.filter((s) => s !== seat));
-    } else {
-      setSelectedSeats([...selectedSeats, seat]);
-    }
-  };
+
 
   return (
+    <>
     <div className="seat-container">
       {seats.map((row, rowIndex) => (
         <div key={rowIndex} className="seat-row">
@@ -36,11 +33,23 @@ const SeatBooking = () => {
             </div>
           ))}
         </div>
-
         //we will go iterate through an array of rows, and in each iteration we iterate through the seats in that row.
-
       ))}
+     
     </div>
+    
+    <div className='seat-info-container'>
+    <div className='selected-seats-container'>
+    {selectedSeats.map((selection) =>(
+        <h3>{selection}</h3>
+    ))}
+    </div>
+    <p>total seats: {totalSelectedSeats}</p>
+    <button className='seats-button'>Book Seats</button>
+    </div>
+
+
+    </>
   );
 };
 

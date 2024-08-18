@@ -5,6 +5,8 @@ import MovieBox from '../components/movieBox';
 
 export default function allMovies() {
 
+
+
   const [error, setError] = useState(null);
 
   const [films, setFilms] = useState([]);
@@ -13,7 +15,7 @@ export default function allMovies() {
 
     const fetchData = async () => {
       try {
-        const response = await fetch('https://api-gate2.movieglu.com/filmsNowShowing/?n=12', {
+        const response = await fetch('https://api-gate2.movieglu.com/filmsNowShowing/?n=7', {
           method: 'GET',
           headers: {
             'Authorization': 'Basic QVVOR19YWDpMZ0huYkZrUkp0ck8=',
@@ -45,22 +47,13 @@ export default function allMovies() {
     return <p>Error: {error.message}</p>;
   }
 
-//   if (!filmData) {
-//     return <p>Loading...</p>;
-//   }
-
   return (
     <div>
       <h1>All Films</h1>
-            
+      
       <div className="movies-container"> 
 
       {films.map((film) => (
-        // <div className="movie-box"> 
-        // <img src={film.images.poster["1"].medium.film_image} alt={film.film_name} />
-
-        // <h3 className='film-name'>{film.film_name}</h3>
-        // </div>
         <MovieBox film={film} />
        ))}
 

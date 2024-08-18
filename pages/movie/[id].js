@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 export default function singleMovie() {
   const [filmData, setFilmData] = useState(null); //film data is a single object so null
@@ -21,7 +22,7 @@ export default function singleMovie() {
           headers: {
             'Authorization': 'Basic QVVOR19YWDpMZ0huYkZrUkp0ck8=',
             'client': 'AUNG',
-            'x-api-key': 'W7aTs2Q4a54LOgfOBxVnI4eFdPEkFtFv8180TGor',
+            'x-api-key': process.env.NEXT_PUBLIC_API_KEY,
             'territory': 'XX',
             'api-version': 'v200',
             'device-datetime': new Date().toISOString(),
@@ -65,7 +66,11 @@ export default function singleMovie() {
         <div key={index}>
           <h3>{cinema.cinema_name}</h3>
           {cinema.showings.Standard.times.map((time, timeIndex) => (
+            <Link href={`/seats`}>
+            <div className='ticket-box'> 
             <p key={timeIndex}>{time.start_time}</p>
+            </div>
+            </Link>
           ))}
 
         </div>
