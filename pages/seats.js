@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { useStateContext } from "../components/Provider";
+import Link from 'next/link';
 import ls from 'local-storage';
+import '../public/css/global.css';
 
 const SeatBooking = () => {
 
-  const { selectedSeats, toggleSeatSelection } = useStateContext();
+  const { selectedSeats, toggleSeatSelection, totalSelectedSeats } = useStateContext();
   // State to keep track of selected seats
-  const totalSelectedSeats = selectedSeats.length;
+
 
   // Example seat layout as a 2D array
   const seats = [
@@ -45,7 +47,9 @@ const SeatBooking = () => {
     ))}
     </div>
     <p>total seats: {totalSelectedSeats}</p>
+    <Link href={`/ticketSelection`}>
     <button className='seats-button'>Book Seats</button>
+    </Link>
     </div>
 
 

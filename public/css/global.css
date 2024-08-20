@@ -1,0 +1,165 @@
+
+.movies-container{
+    display: flex;
+    gap:1rem;
+    flex-wrap:wrap;
+}
+
+.film-name{
+    width:20ch;
+    margin:0;
+}
+
+/* Basic styling for seat container and rows */
+.seat-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .seat-row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  
+  /* Basic styling for seats */
+  .seat {
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+    background-color: lightgray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    transition: background-color 0.3s;
+  }
+  
+  /* Style for selected seats */
+  .seat.selected {
+    background-color: #ff5722;
+    color: white;
+  }
+  
+  .ticket-box{
+    padding:.25rem .5rem;
+    border:solid orange 2px;
+    display: inline-block;
+    margin-right: .5rem;
+  }
+
+  .selected-seats-container{
+    display: flex;
+    gap:.5rem;
+   justify-content: center;
+  }
+
+  .seats-button{
+    margin:0 auto;
+    padding: 1rem 1.5rem;
+    border:solid orange 2px;
+    border-radius: 10px;
+    font-size: 1rem;
+  }
+
+  .seat-info-container{
+    text-align: center;
+  }
+
+  /* ticket selectoion */
+
+.title {
+    color: #FF6F00;
+    margin:1rem;
+}
+
+.review-title{
+    color: black;
+    margin:0;
+}
+
+.ticket-review {
+    /* border:solid red 2px; */
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.ticket-review h2 {
+    margin-bottom: 10px;
+}
+
+.seats {
+    margin-bottom: 20px;
+}
+
+.ticket {
+    width:600px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   padding:25px 0;
+    border-bottom: 1px solid #444;
+    margin:1.2rem;
+}
+
+.ticket-info h3 {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.ticket-info p {
+    margin: 5px 0;
+    color: black;
+}
+
+.ticket-quantity {
+    display: flex;
+    align-items: center;
+}
+
+.quantity-btn {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.quantity {
+    margin: 0 10px;
+}
+
+.fee-note {
+    font-size: 0.9rem;
+    color: #aaa;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.next-btn {
+    background-color: #FF6F00;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin:0;
+   
+}
+
+.next-btn:hover {
+    background-color: #e65c00;
+}

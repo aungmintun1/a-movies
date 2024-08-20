@@ -5,8 +5,6 @@ import MovieBox from '../components/movieBox';
 
 export default function allMovies() {
 
-
-
   const [error, setError] = useState(null);
 
   const [films, setFilms] = useState([]);
@@ -50,7 +48,7 @@ export default function allMovies() {
   return (
     <div>
       <h1>All Films</h1>
-      
+
       <div className="movies-container"> 
 
       {films.map((film) => (

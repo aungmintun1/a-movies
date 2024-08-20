@@ -1,4 +1,4 @@
-import React, { useContext, useState} from 'react';
+import React, { useContext, useState, useEffect} from 'react';
 import ls from 'local-storage';
 
 export const StateContext = React.createContext();
@@ -12,16 +12,25 @@ export function Provider({children}){
   const tickets = 'aung a-movies';
   ls.set('myList', tickets);
 
-  const [selectedSeats, setSelectedSeats] = useState(['A1','A2','A3']);
+  // Initialize selectedSeats from local storage, or default to an empty array
+  const [selectedSeats, setSelectedSeats] = useState(ls.get('selectedSeats') || []);
+  const totalSelectedSeats = selectedSeats.length;
 
-    // Function to handle seat selection
-  //if selectedSeats has the number of the seat then remove it from that array
+  // Effect to keep local storage updated whenever selectedSeats changes
+  useEffect(() => {
+    ls.set('selectedSeats', selectedSeats);
+  }, [selectedSeats]);
+
+  // Function to handle seat selection
   const toggleSeatSelection = (seat) => {
+    let updatedSeats;
     if (selectedSeats.includes(seat)) {
-      setSelectedSeats(selectedSeats.filter((s) => s !== seat));
+      updatedSeats = selectedSeats.filter((s) => s !== seat);
     } else {
-      setSelectedSeats([...selectedSeats, seat]);
+      updatedSeats = [...selectedSeats, seat];
     }
+    setSelectedSeats(updatedSeats);
+    ls.set('selectedSeats', updatedSeats); // Update local storage immediately
   };
 
   return(
@@ -30,7 +39,8 @@ export function Provider({children}){
       tickets,
       selectedSeats,
       setSelectedSeats,
-      toggleSeatSelection
+      toggleSeatSelection,
+      totalSelectedSeats
     }}>
       {children}
     </StateContext.Provider>
