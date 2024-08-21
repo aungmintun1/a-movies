@@ -33,7 +33,7 @@ export default function Footer() {
         </div>
         <div class="col-xs-12 col-md-6">
             <div class="footer-info">
-                <p class="heading-special--small">A.Movie<br/><span class="title-edition">in the social media</span></p>
+                <p class="heading-special--small">Aung Movies<br/><span class="title-edition">in the social media</span></p>
 
                 <div class="social">
                     <a href='#' class="social__variant fa fa-facebook"></a>
@@ -45,7 +45,7 @@ export default function Footer() {
                 </div>
                 
                 <div class="clearfix"></div>
-                <p class="copy">&copy; A.Movie, 2013. All rights reserved. Done by Olia Gozha</p>
+                <p class="copy">&copy; Aung Movies, 2024. All rights reserved</p>
             </div>
         </div>
     </section>

@@ -3135,6 +3135,7 @@ input[type="button"].btn-block {
 .container {
   position: relative;
   clear: both;
+  margin-top:1rem;
 }
 .col--remove {
   padding: 0;
@@ -3143,15 +3144,22 @@ input[type="button"].btn-block {
   background: #2e292e;
   position: relative;
   z-index: 120;
-  height: 55px;
+  height: 75px;
 }
 .header-wrapper--home {
+
   background: rgba(46, 41, 46, 0.8);
   position: absolute;
-  height: 55px;
+  height: 75px;
   width: 100%;
   z-index: 101;
+  
 }
+.nav-link{
+  color:white;
+}
+
+
 .footer-wrapper {
   background-color: #fafafa;
   background-image: url(../images/components/price-pattern.jpg);
@@ -3342,19 +3350,20 @@ input[type="button"].btn-block {
   background-color: transparent;
   margin: 0;
   min-height: 55px;
+  
 }
 ul#navigation {
   margin-right: 280px;
 }
 ul#navigation a {
-  font: 13px 'Roboto', sans-serif;
-  color: #b4b1b2;
+  font: 16px 'aleoregular', sans-serif;
+  color: white;
   -webkit-transition: 0.3s;
   -o-transition: 0.3s;
   transition: 0.3s;
 }
 ul#navigation a:hover {
-  color: #ffffff;
+  color: #ffd564;
 }
 .heading {
   font: 16px 'aleoregular', sans-serif;
