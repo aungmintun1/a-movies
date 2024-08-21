@@ -1,75 +1,124 @@
 import { useStateContext } from "../components/Provider";
 import {useState, useEffect} from 'react';
+import '../public/css/global.css';
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
+import StripeCheckoutBtn from "@/components/StripeCheckoutBtn";
+
 export default function TicketSelection() {
 
-    const { selectedSeats,totalSelectedSeats} = useStateContext();
-    const [adultTickets,setAdultTickets] = useState(totalSelectedSeats);
-    const [seniorTickets,setSeniorTickets] = useState(0);
-    const [childTickets,setChildTickets] = useState(0);
+    const {selectedSeats,totalSelectedSeats} = useStateContext();
+    const [cartItems, setCartItems] = useState([{title:'Adult',quantity:totalSelectedSeats,price:23.00},]);
+    const [inputtedSeats,setInputtedSeats] = useState(totalSelectedSeats);
+      
 
-    const inputtedSeats = adultTickets + seniorTickets + childTickets;
-    const seatLimit = totalSelectedSeats;
+      const addTicket = (title,amount) => {
 
+      if(inputtedSeats<totalSelectedSeats){
+        let ticket = cartItems.find((item) => item.title === title);
+        if (ticket) {
+          setCartItems(cartItems.map(item => item.title === ticket.title ? { ...item, quantity: item.quantity + 1 } : item));
+          setInputtedSeats(inputtedSeats+1);
+        } else {
+          setCartItems([...cartItems, { title: title, quantity: 1, price: amount}]);
+          setInputtedSeats(inputtedSeats+1);
+        }
+      }
+      };
+      
+  
+      const removeTicket = (name) => {
+        let ticket = cartItems.find((item) => item.title === name);
+
+      if(ticket){
+        if (ticket.quantity > 1) {
+          setCartItems(cartItems.map(item =>
+            item.title === ticket.title ? { ...item, quantity: item.quantity - 1 } : item
+          ));
+          setInputtedSeats(inputtedSeats-1);
+        } else {
+          let removeList = cartItems.filter((item) => ticket.title != item.title)
+          setCartItems(removeList);
+          setInputtedSeats(inputtedSeats-1);
+        }
+      }
+      };
+
+      const ticketAmount = (name) =>{
+
+        let ticket = cartItems.find((item) => item.title === name);
+        let number = ticket ? ticket.quantity : 0;
+        return number;
+      }
+
+      // if inputted seats is = to totalseats do nothing, if inputtedSeats is < totalSeats then perform function
+      
+  
   return (
  <>
+ <div class="wrapper">
+   <Header/>
       <section className="ticket-review">
         <div>
         <h1 className="title">Ticket Selection</h1>
-        <h2 className="review-title">Review Your Tickets</h2>
+     
         <p className="seats">Selected Seats: 
           {selectedSeats.map((selection, index) => (
-            <span key={index}>{selection}{index < selectedSeats.length - 1 ? ', ' : ''}</span>
+            <span key={index}> {selection}{index < selectedSeats.length - 1 ? ', ' : ''}</span>
           ))}
        </p>
-       
-{/* 
-       <span> inputted Seats: {inputtedSeats}</span>
-       <span> Seat Limit: {seatLimit}</span> */}
+
+       <p className="seats">total seats: {totalSelectedSeats}</p>
+       <p className="seats">inputted seats: {inputtedSeats}</p>
        </div>
 
         <div className="ticket">
           <div className="ticket-info">
-            <h3>Adult $23.68</h3>
-            <p>$21.49 + $2.19 Fee*</p>
+            <h3>Adult $23.00</h3>
+            <p>$21.00 + $2.00 Fee*</p>
           </div>
           <div className="ticket-quantity">
-            <button onClick={()=> adultTickets > 0 ? setAdultTickets(adultTickets-1) : null} className="quantity-btn">-</button>
-            <span className="quantity">{adultTickets}</span>
-            <button className="quantity-btn" onClick={()=> inputtedSeats < seatLimit ? setAdultTickets(adultTickets+1) : null}>+</button>
+            <button onClick={()=> removeTicket('Adult')} className="quantity-btn">-</button>
+            <span className="quantity">{ticketAmount('Adult')}</span>
+            <button className="quantity-btn" onClick={()=>addTicket('Adult',23)}>+</button>
           </div>
         </div>
 
         <div className="ticket">
           <div className="ticket-info">
-            <h3>Senior $21.68</h3>
-            <p>$19.49 + $2.19 Fee*</p>
+            <h3>Senior $21.00</h3>
+            <p>$19.00 + $2.00 Fee*</p>
           </div>
           <div className="ticket-quantity">
-            <button onClick={()=> seniorTickets > 0 ? setSeniorTickets(seniorTickets-1) : null} className="quantity-btn">-</button>
-            <span className="quantity">{seniorTickets}</span>
-            <button className="quantity-btn" onClick={()=>  inputtedSeats < seatLimit ? setSeniorTickets(seniorTickets+1) : null}>+</button>
+            <button onClick={()=> removeTicket('Senior')} className="quantity-btn">-</button>
+            <span className="quantity">{ticketAmount('Senior')}</span>
+            <button className="quantity-btn" onClick={()=>addTicket('Senior',21)}>+</button>
           </div>
         </div>
 
         <div className="ticket">
           <div className="ticket-info">
-            <h3>Child $20.68</h3>
-            <p>$18.49 + $2.19 Fee*</p>
+            <h3>Child $20.00</h3>
+            <p>$18.00 + $2.00 Fee*</p>
           </div>
           <div className="ticket-quantity">
-            <button onClick={()=> childTickets > 0 ? setChildTickets(childTickets-1) : null} className="quantity-btn">-</button>
-            <span className="quantity">{childTickets}</span>
-            <button className="quantity-btn" onClick={()=>  inputtedSeats < seatLimit ? setChildTickets(childTickets+1) : null}>+</button>
+            <button onClick={()=> removeTicket('Child')} className="quantity-btn">-</button>
+            <span className="quantity">{ticketAmount('Child')}</span>
+            <button className="quantity-btn" onClick={()=>addTicket('Child',20)}>+</button>
           </div>
         </div>
-        <button className="next-btn">Next</button>
+
+        {cartItems.map((item)=>( <p>{item.title} - quantity: {item.quantity}</p>))}
+
+        <StripeCheckoutBtn cartItems={cartItems}/>
         <p className="fee-note">
           *Fee is the Convenience Fee per ticket. Prices and fees include estimated tax, if any.
         </p>
 
       </section>
 
-   
+   <Footer/>
+    </div>
       </>
   );
 }

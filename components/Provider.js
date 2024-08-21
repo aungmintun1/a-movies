@@ -31,6 +31,7 @@ export function Provider({children}){
     }
     setSelectedSeats(updatedSeats);
     ls.set('selectedSeats', updatedSeats); // Update local storage immediately
+    
   };
 
   return(

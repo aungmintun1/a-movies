@@ -35,6 +35,7 @@ class MyDocument extends Document {
         <link rel="stylesheet" type="text/css" href="/css/navigation.css"/>
         <link href="/css/style.css?v=1" rel="stylesheet" />
 
+        <script src='https://js.stripe.com/v3/'/>
       
       </Head>
 
