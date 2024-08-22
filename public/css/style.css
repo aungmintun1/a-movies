@@ -4159,7 +4159,7 @@ ul#navigation a:hover {
 }
 .search {
   position: relative;
-  top: -10px;
+  top: 10px;
 }
 .search .search__field {
   display: inline-block;
@@ -6659,7 +6659,7 @@ ul#navigation li.mega-menu__nav-item:hover:before {
 .contact-form-wrapper {
   background-color: #ffd564;
   overflow: hidden;
-  margin: 76px 0;
+  margin-top: 76px;
   padding: 56px 0 60px;
 }
 .contact-info {
@@ -10696,4 +10696,11 @@ ul#navigation li.mega-menu__nav-item:hover:before {
 
 .img-border {
   border: 5px solid #ffd564;
+}
+
+.margin-section{
+  margin-top:5rem;
+}
+.margin-search{
+  margin-top:7.5rem;
 }

@@ -8,7 +8,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
 const SeatBooking = () => {
-  const {setSelectedSeats} = useStateContext();
+  const {selectedSeats, setSelectedSeats} = useStateContext();
 
   useEffect(() => {
   // Set the selected seats to an empty array when the component mounts
@@ -23,25 +23,9 @@ const SeatBooking = () => {
 <div class="wrapper place-wrapper">
      
      <Header/>
-  
-        <div class="search-wrapper">
-            <div class="container container--add">
-                <form id='search-form' method='get' class="search">
-                    <input type="text" class="search__field" placeholder="Search"/>
-                    <select name="sorting_item" id="search-sort" class="search__sort" tabindex="0">
-                        <option value="1" selected='selected'>By title</option>
-                        <option value="2">By year</option>
-                        <option value="3">By producer</option>
-                        <option value="4">By title</option>
-                        <option value="5">By year</option>
-                    </select>
-                    <button type='submit' class="btn btn-md btn--danger search__button">search a movie</button>
-                </form>
-            </div>
-        </div>
    
-   <div class="place-form-area">
-   <section class="container"> 
+   <div class="place-form-area ">
+   <section class="container margin-section"> 
             <div class="order-container">
                 <div class="order">
                     <img class="order__images" alt='' src="images/tickets.png"/>
@@ -61,9 +45,9 @@ const SeatBooking = () => {
                 <div class="choose-sits__info choose-sits__info--first">
                     <ul>
                         <li class="sits-price marker--none"><strong>Price</strong></li>
-                        <li class="sits-price sits-price--cheap">$10</li>
-                        <li class="sits-price sits-price--middle">$20</li>
-                        <li class="sits-price sits-price--expensive">$30</li>
+                        <li class="sits-price sits-price--cheap">Front</li>
+                        <li class="sits-price sits-price--middle">Middle</li>
+                        <li class="sits-price sits-price--expensive">Back</li>
                     </ul>
                 </div>
 
@@ -100,9 +84,12 @@ const SeatBooking = () => {
                         <aside class="sits__checked">
                             <div class="checked-place">
                                 
+                                {selectedSeats.map((seat)=> (
+                                  <span className='choosen-place C15'>{seat}</span>
+                                ))}
                             </div>
                             <div class="checked-result">
-                                $0
+                               ${selectedSeats.length*23}
                             </div>
                         </aside>
                         <footer class="sits__number">

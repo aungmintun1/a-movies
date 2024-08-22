@@ -17,23 +17,28 @@ export default function Header() {
                     <ul id="navigation">
                         <li>
                             <span class="sub-nav-toggle plus "></span>
-                            <a href="#">Home</a>
+                            <a href="/">Home</a>
+                    
+                        </li>
+                        <li>
+                            <span class="sub-nav-toggle plus "></span>
+                            <a href="/search">Search</a>
                     
                         </li>
                         <li>
                             <span class="C plus"></span>
-                            <a href="page-elements.html">About</a>
+                            <a href="/contact">Contact</a>
                      
                         </li>
                    
                         <li>
                             <span class="sub-nav-toggle plus"></span>
-                            <a href="gallery-four.html">Gallery</a>
+                            <a href="/offers">Offers</a>
                      
                         </li>
                         <li>
                             <span class="sub-nav-toggle plus"></span>
-                            <a href="news-left.html">News</a>
+                            <a href="/news">News</a>
                         </li>
                       
                     </ul>
@@ -56,7 +61,7 @@ export default function Header() {
                         </ul>
 
                     </div>
-                    <a href="#" class="btn btn-md btn--warning btn--book btn-control--home login-window">Book a ticket</a>
+                    <a href="/" class="btn btn-md btn--warning btn--book btn-control--home login-window">Book a ticket</a>
                 </div>
 
             </div>

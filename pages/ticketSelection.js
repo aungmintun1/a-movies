@@ -68,8 +68,6 @@ export default function TicketSelection() {
           ))}
        </p>
 
-       <p className="seats">total seats: {totalSelectedSeats}</p>
-       <p className="seats">inputted seats: {inputtedSeats}</p>
        </div>
 
         <div className="ticket">
@@ -108,7 +106,6 @@ export default function TicketSelection() {
           </div>
         </div>
 
-        {cartItems.map((item)=>( <p>{item.title} - quantity: {item.quantity}</p>))}
 
         <StripeCheckoutBtn cartItems={cartItems}/>
         <p className="fee-note">

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@stripe/stripe-js": "^4.3.0",
+    "axios": "^1.7.4",
     "local-storage": "^2.0.0",
     "next": "14.2.5",
     "react": "^18",
