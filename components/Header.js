@@ -8,7 +8,7 @@ export default function Header() {
             <div class="container">
              
                 <a href='/' class="logo">
-                    <img alt='logo' src="images/logo.png"/>
+                    <img alt='logo' src="/images/logo.png"/>
                 </a>
                 
               
