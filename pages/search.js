@@ -165,7 +165,7 @@ const SearchResults = (props) => {
 
                    <div class="movie__btns">
                        <a href="#" class="btn btn-md btn--warning">book a ticket <span class="hidden-sm">for this movie</span></a>
-                       <a href="#" class="watchlist">Add to watchlist</a>
+                       
                    </div>
 
                  

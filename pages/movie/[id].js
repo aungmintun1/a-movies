@@ -131,7 +131,7 @@ export default function singleMovie() {
 
                         <div className="movie__btns movie__btns--full">
                             <a href="#" className="btn btn-md btn--warning">book a ticket for this movie</a>
-                            <a href="#" className="watchlist">Add to watchlist</a>
+                         
                         </div>
 
                         {/* <div className="share">
